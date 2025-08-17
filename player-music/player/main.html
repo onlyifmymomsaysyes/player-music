@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Offline Music Player</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+
+    <body>
+
+        <h1>Offline Music Player</h1>
+        <input type="file" id="folderInput" accept="audio/*" webkitdirectory multiple>
+
+        <div id="audio-box">
+            <input type="range" id="seekBar" value="0" min="0" step="1" />
+            <audio id="myAudio"></audio>
+        </div>
+        
+
+        <button onclick="playAudio()" type="button">Play Audio</button>
+        <button onclick="pauseAudio()" type="button">Pause Audio</button> 
+
+        <ul id="elementList" class="listbox">
+            <li>None</li>
+        </ul>
+
+        <p id="output"></p>
+
+        <script src="scripts/script.js"></script>
+    </body>
+</html>
