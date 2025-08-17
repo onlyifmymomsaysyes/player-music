@@ -1,31 +1,28 @@
 const fileInput = document.getElementById("folderInput");
 const player = document.getElementById("myAudio");
 const seekBar = document.getElementById("seekBar");
-const musicPlaylist = document.getElementById("elementList");
 
 let songList = [];
 
 fileInput.addEventListener('change', function() {
-    const files = Array.from(this.files).filter(file =>
-        file.type.startsWith("audio/") ||
-        file.name.toLowerCase().endsWith(".flac")
-    );
-    
-    for (const e in files) {
-        songList.push(files[e]);
-    }
+    const files = this.files;
+    console.log(files[0])
 
+    for (const e in files) {
+        songList.push({
+            name: files[e].name,
+            path: files[e].webkitRelativePath
+        })
+    }
     if (files) {
-        const url = URL.createObjectURL(songList[0]);
+        const url = URL.createObjectURL(file);
         player.src = url;
     }
 });
 
 player.addEventListener('loadedmetadata', function() {
-    seekBar.max = Math.floor(player.duration); 
-
-    
-
+    seekBar.max = Math.floor(player.duration);
+    console.log(player.duration);
 });
 
 player.addEventListener('timeupdate', function() {
